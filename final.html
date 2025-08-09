@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Final</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: #ffdde1; /* Nền hồng nhẹ */
+        overflow: hidden;
+        font-family: 'Segoe UI', sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    /* Chữ "Chim đây" */
+    h1 {
+        font-size: 50px;
+        color: #ff3366;
+        animation: fadeZoom 1.5s ease forwards;
+        z-index: 2;
+    }
+
+    @keyframes fadeZoom {
+        0% { opacity: 0; transform: scale(0.5); }
+        100% { opacity: 1; transform: scale(1); }
+    }
+
+    /* Ảnh */
+    img {
+        width: 250px;
+        border-radius: 15px;
+        animation: slideUp 1.5s ease forwards;
+        z-index: 2;
+    }
+
+    @keyframes slideUp {
+        0% { opacity: 0; transform: translateY(50px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Nút click */
+    .click-next {
+        margin-top: 20px;
+        padding: 12px 25px;
+        background: #ff6699;
+        color: white;
+        border: none;
+        border-radius: 30px;
+        font-size: 18px;
+        cursor: pointer;
+        animation: pulse 1.5s infinite;
+        z-index: 2;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+
+    /* Hiệu ứng mưa trái tim */
+    .heart {
+        position: absolute;
+        color: #ff3366;
+        animation: fall linear infinite;
+        opacity: 0.8;
+    }
+
+    @keyframes fall {
+        0% { transform: translateY(-10%); }
+        100% { transform: translateY(110vh); }
+    }
+
+    /* Sao lung linh */
+    .star {
+        position: absolute;
+        background: white;
+        border-radius: 50%;
+        opacity: 0.8;
+        animation: twinkle 1.5s infinite alternate;
+    }
+
+    @keyframes twinkle {
+        from { opacity: 0.2; transform: scale(1); }
+        to { opacity: 1; transform: scale(1.3); }
+    }
+</style>
+</head>
+<body>
+
+<h1>Chim đây 💖</h1>
+<img src="images/chim.png" alt="Ảnh yêu thương">
+<button class="click-next" onclick="window.location.href='nextpage.html'">Xem tiếp</button>
+
+<script>
+    // Tạo mưa trái tim
+    for (let i = 0; i < 20; i++) {
+        let heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "💖";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (20 + Math.random() * 30) + "px";
+        heart.style.animationDuration = (3 + Math.random() * 5) + "s";
+        document.body.appendChild(heart);
+    }
+
+    // Tạo sao lung linh
+    for (let i = 0; i < 15; i++) {
+        let star = document.createElement("div");
+        star.classList.add("star");
+        let size = Math.random() * 4 + 2;
+        star.style.width = size + "px";
+        star.style.height = size + "px";
+        star.style.left = Math.random() * 100 + "vw";
+        star.style.top = Math.random() * 100 + "vh";
+        star.style.animationDuration = (1 + Math.random() * 2) + "s";
+        document.body.appendChild(star);
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Em có yêu anh không?</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: #ffdde1;
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+        height: 100vh;
+    }
+    /* Trái tim bay */
+    .heart {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: red;
+        transform: rotate(45deg);
+        animation: fly 8s linear infinite;
+    }
+    .heart::before,
+    .heart::after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: red;
+        border-radius: 50%;
+    }
+    .heart::before {
+        top: -10px;
+        left: 0;
+    }
+    .heart::after {
+        left: -10px;
+        top: 0;
+    }
+    @keyframes fly {
+        0% { transform: translateY(100vh) rotate(45deg); opacity: 1; }
+        100% { transform: translateY(-20vh) rotate(45deg); opacity: 0; }
+    }
+
+    /* Khung câu hỏi */
+    .container {
+        position: relative;
+        z-index: 10;
+        text-align: center;
+        top: 35%;
+    }
+    .question {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        font-size: 28px;
+        font-weight: bold;
+        color: #d63384;
+    }
+    .question img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    .answers {
+        margin-top: 20px;
+    }
+    .answers button {
+        background: #ff4d6d;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        margin: 5px;
+        font-size: 16px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: transform 0.2s;
+        position: relative;
+    }
+    .answers button:hover {
+        transform: scale(1.1);
+    }
+</style>
+</head>
+<body>
+
+<!-- Tạo nhiều trái tim -->
+<script>
+for (let i = 0; i < 20; i++) {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+    document.body.appendChild(heart);
+}
+</script>
+
+<div class="container">
+    <div class="question">
+        <span>Em có yêu anh không?</span>
+        <img src="images/vkl.png" alt="Ảnh nhỏ">
+    </div>
+    <div class="answers">
+        <button onclick="goNext()">Trả lời 1</button>
+        <button onclick="goNext()">Trả lời 2</button>
+        <button onclick="goNext()">Trả lời 3</button>
+        <button id="escapeBtn">Trả lời 4</button>
+    </div>
+</div>
+
+<script>
+    // Chuyển sang trang tiếp theo
+    function goNext() {
+        window.location.href = "next.html"; // thay link nếu cần
+    }
+
+    // Nút chạy trốn
+    const escapeBtn = document.getElementById('escapeBtn');
+    escapeBtn.addEventListener('mouseover', () => {
+        const x = Math.random() * (window.innerWidth - escapeBtn.offsetWidth);
+        const y = Math.random() * (window.innerHeight - escapeBtn.offsetHeight);
+        escapeBtn.style.position = 'absolute';
+        escapeBtn.style.left = `${x}px`;
+        escapeBtn.style.top = `${y}px`;
+    });
+</script>
+
+</body>
+</html>

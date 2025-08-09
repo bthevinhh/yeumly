@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: pink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+h2 {
+    color: #d63384;
+}
+
+input {
+    width: 80%;
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+    background: white;
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.keypad button {
+    padding: 15px;
+    font-size: 18px;
+    background: #ff99cc;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.keypad button:hover {
+    background: #ff6699;
+    color: white;
+}

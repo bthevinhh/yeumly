@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love Scene</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        height: 100vh;
+        background: linear-gradient(to bottom, #ff9aa2, #ffb3ba, #ffccd5);
+        position: relative;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Trái tim bay */
+    .heart {
+        position: absolute;
+        font-size: 24px;
+        animation: floatUp linear forwards;
+    }
+    @keyframes floatUp {
+        0% { transform: translateY(0) scale(1); opacity: 1; }
+        100% { transform: translateY(-120vh) scale(0.5); opacity: 0; }
+    }
+
+    /* Biểu tượng bay ngang */
+    .love-icon {
+        position: absolute;
+        font-size: 28px;
+        animation: flyAcross linear forwards;
+    }
+    @keyframes flyAcross {
+        0% { transform: translateX(-100px); opacity: 1; }
+        100% { transform: translateX(110vw); opacity: 0; }
+    }
+
+    /* Trái tim rơi xuống */
+    .falling-love {
+        position: absolute;
+        font-size: 22px;
+        animation: fallDown linear forwards;
+    }
+    @keyframes fallDown {
+        0% { transform: translateY(-50px); opacity: 1; }
+        100% { transform: translateY(110vh); opacity: 0; }
+    }
+
+    /* Dòng chữ bay ngang */
+    .banner {
+        position: absolute;
+        top: 50%;
+        left: -100%;
+        background: rgba(255,255,255,0.8);
+        padding: 10px 30px;
+        border-radius: 30px;
+        font-size: 1.8em;
+        font-weight: bold;
+        color: #d6336c;
+        white-space: nowrap;
+        animation: bannerMove 12s linear infinite;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .banner img {
+        height: 40px;
+    }
+    @keyframes bannerMove {
+        0% { left: 110%; }
+        100% { left: -100%; }
+    }
+
+    /* Ảnh bay lên */
+    .flying-img {
+        position: absolute;
+        animation: flyUp linear forwards;
+    }
+@keyframes flyUp {
+        0% { transform: translateY(0) scale(1); opacity: 1; }
+        100% { transform: translateY(-120vh) scale(0.8); opacity: 0; }
+    }
+</style>
+</head>
+<body>
+
+<!-- Dòng chữ bay ngang -->
+<div class="banner">
+    <img src="images/cc.png" alt="heart">
+    💖 A yêu e yêu e rất nhiều a mong e có thể bỏ qua cho sự ích kỉ của a bỏ qua cho những sai lầm của ảnh a mong chúng ta có thể bên nhau mãi mãi. Yêu Em  💖
+    <img src="images/cc.png" alt="heart">
+</div>
+
+<!-- Container ảnh bay -->
+<div id="img-container"></div>
+
+<script>
+// Icon tình yêu (có thể thay thêm)
+const loveSymbols = ["💖","💘","💝","💓","💗","💕","💞","❤️","💟"];
+
+// Hàm tạo trái tim bay lên
+function createHeart() {
+    let heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.innerText = loveSymbols[Math.floor(Math.random()*loveSymbols.length)];
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.bottom = "-30px";
+    heart.style.animationDuration = (Math.random()*3+4) + "s";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(), 8000);
+}
+setInterval(createHeart, 400);
+
+// Hàm tạo biểu tượng bay ngang
+function createLoveIcon() {
+    let icon = document.createElement('div');
+    icon.classList.add('love-icon');
+    icon.innerText = loveSymbols[Math.floor(Math.random()*loveSymbols.length)];
+    icon.style.top = Math.random()*100 + "vh";
+    icon.style.left = "-50px";
+    icon.style.animationDuration = (Math.random()*3+5) + "s";
+    document.body.appendChild(icon);
+    setTimeout(()=>icon.remove(), 8000);
+}
+setInterval(createLoveIcon, 1500);
+
+// Hàm tạo trái tim rơi xuống
+function createFallingLove() {
+    let fall = document.createElement('div');
+    fall.classList.add('falling-love');
+    fall.innerText = loveSymbols[Math.floor(Math.random()*loveSymbols.length)];
+    fall.style.left = Math.random()*100 + "vw";
+    fall.style.top = "-20px";
+    fall.style.animationDuration = (Math.random()*3+4) + "s";
+    document.body.appendChild(fall);
+    setTimeout(()=>fall.remove(), 8000);
+}
+setInterval(createFallingLove, 700);
+
+// Danh sách ảnh bay lên (thay 5–7 ảnh của bạn vào đây)
+let imgList = [
+    'images/em.png',
+    'images/vl.png',
+    'images/ngon.png',
+    'images/yeu.png',
+    'images/mup.png',
+    'images/xi.png',
+    'images/oke.png'
+];
+
+
+// Hàm tạo ảnh bay lên
+function createFlyingImg() {
+    let img = document.createElement('img');
+    img.src = imgList[Math.floor(Math.random()*imgList.length)];
+    img.classList.add('flying-img');
+    let size = Math.random()*50+40;
+    img.style.width = size + "px";
+    img.style.left = Math.random()*100 + "vw";
+    img.style.bottom = "-60px";
+    img.style.animationDuration = (Math.random()*4+5) + "s";
+    document.getElementById('img-container').appendChild(img);
+    setTimeout(()=>img.remove(), 10000);
+}
+setInterval(createFlyingImg, 500);
+</script>
+
+</body>
+</html>

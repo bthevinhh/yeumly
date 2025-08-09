@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Next</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: #ffe6f0;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        height: 100vh;
+    }
+
+    /* Mưa trái tim */
+    .heart {
+        position: fixed;
+        top: -10px;
+        color: red;
+        font-size: 20px;
+        animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+        to {
+            transform: translateY(110vh);
+        }
+    }
+
+    .container {
+        position: relative;
+        top: 30%;
+        transform: translateY(-30%);
+    }
+
+    img {
+        max-width: 200px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(255, 0, 102, 0.5);
+    }
+
+    h2 {
+        color: #ff3366;
+        font-size: 28px;
+        margin: 20px 0;
+    }
+
+    .next-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background: #ff6699;
+        color: white;
+        font-weight: bold;
+        border-radius: 25px;
+        text-decoration: none;
+        box-shadow: 0 5px 10px rgba(255, 0, 102, 0.3);
+        transition: 0.3s;
+    }
+
+    .next-btn:hover {
+        background: #ff3366;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <img src="images/cc.png" alt="Ảnh của em">
+    <h2>Anh cũng yêu em ❤️</h2>
+    <a class="next-btn" href="final.html">Xem chim nào 👉</a>
+</div>
+
+<script>
+    // Tạo hiệu ứng mưa trái tim
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random() * 2 + 3) + "s"; // tốc độ rơi
+        heart.innerText = "❤️";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 5000);
+    }
+
+    setInterval(createHeart, 200);
+</script>
+
+</body>
+</html>
